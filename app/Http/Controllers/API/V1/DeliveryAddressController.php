@@ -29,14 +29,14 @@ class DeliveryAddressController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "building_name" => "nullable|string|max:255",
-            "street_number" => "required|string|max:255",
-            "street_name" => "required|string|max:255",
+            "buildingName" => "nullable|string|max:255",
+            "streetNumber" => "required|string|max:255",
+            "streetName" => "required|string|max:255",
             "city" => "required|string|max:255",
             "county" => "required|string|max:255",
-            "postal_code" => "required|string|max:20",
+            "postalCode" => "required|string|max:20",
             "country" => "required|string|max:255",
-            "is_default" => "nullable|boolean",
+            "isDefault" => "nullable|boolean",
         ]);
 
         if ($validator->fails()) {
@@ -48,14 +48,14 @@ class DeliveryAddressController extends Controller
         $deliveryAddress = auth()->user()
             ->deliveryAddresses()
             ->create([
-                "building_name" => $request->building_name,
-                "street_number" => $request->street_number,
-                "street_name" => $request->street_name,
+                "building_name" => $request->buildingName,
+                "street_number" => $request->streetNumber,
+                "street_name" => $request->streetName,
                 "city" => $request->city,
                 "county" => $request->county,
-                "postal_code" => $request->postal_code,
+                "postal_code" => $request->postalCode,
                 "country" => $request->country,
-                "is_default" => $request->is_default ?? 0,
+                "is_default" => $request->isDefault ?? 0,
             ]);
         
         if ($deliveryAddress->is_default) {
@@ -95,14 +95,14 @@ class DeliveryAddressController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            "building_name" => "nullable|string|max:255",
-            "street_number" => "sometimes|required|string|max:255",
-            "street_name" => "sometimes|required|string|max:255",
+            "buildingName" => "nullable|string|max:255",
+            "streetNumber" => "sometimes|required|string|max:255",
+            "streetName" => "sometimes|required|string|max:255",
             "city" => "sometimes|required|string|max:255",
             "county" => "sometimes|required|string|max:255",
-            "postal_code" => "sometimes|required|string|max:20",
+            "postalCode" => "sometimes|required|string|max:20",
             "country" => "sometimes|required|string|max:255",
-            "is_default" => "nullable|boolean",
+            "isDefault" => "nullable|boolean",
         ]);
 
         if ($validator->fails()) {
@@ -111,14 +111,14 @@ class DeliveryAddressController extends Controller
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        if ($request->building_name) {
-            $deliveryAddress->building_name = $request->building_name;
+        if ($request->buildingName) {
+            $deliveryAddress->building_name = $request->buildingName;
         }
-        if ($request->street_number) {
-            $deliveryAddress->street_number = $request->street_number;
+        if ($request->streetNumber) {
+            $deliveryAddress->street_number = $request->streetNumber;
         }
-        if ($request->street_name) {
-            $deliveryAddress->street_name = $request->street_name;
+        if ($request->streetName) {
+            $deliveryAddress->street_name = $request->streetName;
         }
         if ($request->city) {
             $deliveryAddress->city = $request->city;
@@ -126,14 +126,14 @@ class DeliveryAddressController extends Controller
         if ($request->county) {
             $deliveryAddress->county = $request->county;
         }
-        if ($request->postal_code) {
-            $deliveryAddress->postal_code = $request->postal_code;
+        if ($request->postalCode) {
+            $deliveryAddress->postal_code = $request->postalCode;
         }
         if ($request->country) {
             $deliveryAddress->country = $request->country;
         }
-        if ($request->is_default) {
-            $deliveryAddress->is_default = $request->is_default;
+        if ($request->isDefault) {
+            $deliveryAddress->is_default = $request->isDefault;
         }
 
         $deliveryAddress->save();

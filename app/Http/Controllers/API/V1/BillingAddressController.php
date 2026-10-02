@@ -29,14 +29,14 @@ class BillingAddressController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "building_name" => "nullable|string|max:255",
-            "street_number" => "required|string|max:255",
-            "street_name" => "required|string|max:255",
+            "buildingName" => "nullable|string|max:255",
+            "streetNumber" => "required|string|max:255",
+            "streetName" => "required|string|max:255",
             "city" => "required|string|max:255",
             "county" => "required|string|max:255",
-            "postal_code" => "required|string|max:20",
+            "postalCode" => "required|string|max:20",
             "country" => "required|string|max:255",
-            "is_default" => "nullable|boolean",
+            "isDefault" => "nullable|boolean",
         ]);
 
         if ($validator->fails()) {
@@ -48,14 +48,14 @@ class BillingAddressController extends Controller
         $billingAddress = auth()->user()
             ->billingAddresses()
             ->create([
-                "building_name" => $request->building_name,
-                "street_number" => $request->street_number,
-                "street_name" => $request->street_name,
+                "building_name" => $request->buildingName,
+                "street_number" => $request->streetNumber,
+                "street_name" => $request->streetName,
                 "city" => $request->city,
                 "county" => $request->county,
-                "postal_code" => $request->postal_code,
+                "postal_code" => $request->postalCode,
                 "country" => $request->country,
-                "is_default" => $request->is_default ?? 0,
+                "is_default" => $request->isDefault ?? 0,
             ]);
         
         if ($billingAddress->is_default) {
@@ -95,14 +95,14 @@ class BillingAddressController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            "building_name" => "nullable|string|max:255",
-            "street_number" => "sometimes|required|string|max:255",
-            "street_name" => "sometimes|required|string|max:255",
+            "buildingName" => "nullable|string|max:255",
+            "streetNumber" => "sometimes|required|string|max:255",
+            "streetName" => "sometimes|required|string|max:255",
             "city" => "sometimes|required|string|max:255",
             "county" => "sometimes|required|string|max:255",
-            "postal_code" => "sometimes|required|string|max:20",
+            "postalCode" => "sometimes|required|string|max:20",
             "country" => "sometimes|required|string|max:255",
-            "is_default" => "nullable|boolean",
+            "isDefault" => "nullable|boolean",
         ]);
 
         if ($validator->fails()) {
@@ -111,14 +111,14 @@ class BillingAddressController extends Controller
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        if ($request->building_name) {
-            $billingAddress->building_name = $request->building_name;
+        if ($request->buildingName) {
+            $billingAddress->building_name = $request->buildingName;
         }
-        if ($request->street_number) {
-            $billingAddress->street_number = $request->street_number;
+        if ($request->streetNumber) {
+            $billingAddress->street_number = $request->streetNumber;
         }
-        if ($request->street_name) {
-            $billingAddress->street_name = $request->street_name;
+        if ($request->streetName) {
+            $billingAddress->street_name = $request->streetName;
         }
         if ($request->city) {
             $billingAddress->city = $request->city;
@@ -126,14 +126,14 @@ class BillingAddressController extends Controller
         if ($request->county) {
             $billingAddress->county = $request->county;
         }
-        if ($request->postal_code) {
-            $billingAddress->postal_code = $request->postal_code;
+        if ($request->postalCode) {
+            $billingAddress->postal_code = $request->postalCode;
         }
         if ($request->country) {
             $billingAddress->country = $request->country;
         }
-        if ($request->is_default) {
-            $billingAddress->is_default = $request->is_default;
+        if ($request->isDefault) {
+            $billingAddress->is_default = $request->isDefault;
         }
 
         $billingAddress->save();
