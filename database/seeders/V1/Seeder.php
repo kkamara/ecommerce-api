@@ -22,8 +22,13 @@ class Seeder extends IlluminateSeeder
             "email" => "jane@example.com",
         ]);
 
+        $userId = $user->id;
+
         DeliveryAddress::factory()->create([
-            "user_id" => $user->id,
+            "user_id" => $userId,
+        ]);
+        DeliveryAddress::factory()->create([
+            "user_id" => $userId,
             "is_default" => 1,
         ]);
     }
