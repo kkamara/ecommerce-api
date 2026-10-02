@@ -427,6 +427,241 @@
           ]
         },
         {
+          "name": "Billing Addresses",
+          "item": [
+            {
+              "name": "Get All",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
+                "url": {
+                  "raw": "{{API}}/billing-addresses",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "billing-addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"street_number\": \"3\",\r\n    \"street_name\": \"Bedford Place\",\r\n    \"city\": \"London\",\r\n    \"county\": \"Westminster\",\r\n    \"postal_code\": \"SW POST\",\r\n    \"country\": \"United Kingdom\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{API}}/billing-addresses",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "billing-addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Show",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
+                "url": {
+                  "raw": "{{API}}/billing-addresses/3",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "billing-addresses",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"street_number\": \"5\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{API}}/billing-addresses/3",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "billing-addresses",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"street_number\": \"2\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{API}}/billing-addresses/3",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "billing-addresses",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Health",
           "request": {
             "auth": {

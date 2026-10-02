@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(DeliveryAddress::class);
     }
+
+    public function billingAddresses()
+    {
+        return $this->hasMany(BillingAddress::class);
+    }
 }
