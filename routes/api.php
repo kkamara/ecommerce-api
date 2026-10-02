@@ -33,7 +33,7 @@ Route::prefix("/v1")->group(function () {
     });
     Route::prefix("/user")->group(function () {
         Route::post("/register", [UserController::class, "register"]);
-        Route::post("/", [UserController::class, "login"]);
+        Route::post("/", [UserController::class, "login"])->name("login");
         Route::delete(
             "/",
             [UserController::class, "logout"],
