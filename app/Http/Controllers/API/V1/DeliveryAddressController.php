@@ -153,6 +153,14 @@ class DeliveryAddressController extends Controller
      */
     public function destroy(DeliveryAddress $deliveryAddress)
     {
-        
+        if ($deliveryAddress->user_id !== auth()->id()) {
+            return response()->json([
+                "error" => "Unauthorized"
+            ], Response::HTTP_FORBIDDEN);
+        }
+
+        $deliveryAddress->delete();
+
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }
