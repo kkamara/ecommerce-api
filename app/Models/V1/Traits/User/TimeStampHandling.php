@@ -15,7 +15,12 @@ trait TimeStampHandling
         }
 
         $this->attributes['created_at'] = Carbon::parse($value)
-            ->utc()
+            ->toDateTimeString();
+    }
+
+    public function getCreatedAtAttribute(mixed $value): string
+    {
+        return Carbon::parse($value)
             ->toDateTimeString();
     }
 
@@ -28,7 +33,12 @@ trait TimeStampHandling
         }
 
         $this->attributes['updated_at'] = Carbon::parse($value)
-            ->utc()
+            ->toDateTimeString();
+    }
+
+    public function getUpdatedAtAttribute(mixed $value): string
+    {
+        return Carbon::parse($value)
             ->toDateTimeString();
     }
 }

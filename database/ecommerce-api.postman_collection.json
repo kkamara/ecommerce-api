@@ -222,9 +222,49 @@
                     "value": "Europe/London"
                   }
                 ],
+                "url": {
+                  "raw": "{{API}}/delivery-addresses",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "delivery-addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"email\": \"jane@example.com\",\r\n    \"password\": \"secret\"\r\n}",
+                  "raw": "{\r\n    \"street_number\": \"1\",\r\n    \"street_name\": \"My Place\",\r\n    \"city\": \"London\",\r\n    \"county\": \"Lewisham\",\r\n    \"postal_code\": \"SE POST\",\r\n    \"country\": \"United Kingdom\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"

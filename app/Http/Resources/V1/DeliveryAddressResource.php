@@ -22,7 +22,7 @@ class DeliveryAddressResource extends JsonResource
             "streetNumber" => $this->street_number,
             "streetName" => $this->street_name,
             'city' => $this->city,
-            'state' => $this->state,
+            'county' => $this->county,
             'postalCode' => $this->postal_code,
             'country' => $this->country,
             'createdAt' => $this->created_at,

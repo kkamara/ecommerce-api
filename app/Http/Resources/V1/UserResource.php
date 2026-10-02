@@ -19,18 +19,8 @@ class UserResource extends JsonResource
             "firstName" => $this->first_name,
             "lastName" => $this->last_name,
             "email" => $this->email,
-            "createdAt" => $this->created_at
-                ->tz(config(
-                    "app.client_timezone",
-                    config("app.timezone")
-                ))
-                ->toDateTimeString(),
-            "updatedAt" => $this->updated_at
-                ->tz(config(
-                    "app.client_timezone",
-                    config("app.timezone")
-                ))
-                ->toDateTimeString(),
+            "createdAt" => $this->created_at,
+            "updatedAt" => $this->updated_at,
             "token" => $this->when(isset($this->token), $this->token),
         ];
     }
