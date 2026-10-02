@@ -53,10 +53,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function getAvatarPath(): string
+    public function deliveryAddresses()
     {
-        return $this->avatar_name ?
-            config('app.url')."/storage/images/profile/".$this->avatar_name :
-            config('app.url')."/storage/images/profile/default-avatar.webp";
+        return $this->hasMany(DeliveryAddress::class);
     }
 }

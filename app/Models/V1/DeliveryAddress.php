@@ -20,6 +20,7 @@ class DeliveryAddress extends Model
      */
     protected $fillable = [
         "user_id",
+        "is_default",
         "building_name",
         "street_number",
         "street_name",
@@ -28,4 +29,9 @@ class DeliveryAddress extends Model
         "postal_code",
         "country",
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

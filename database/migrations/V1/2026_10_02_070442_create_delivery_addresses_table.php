@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('delivery_addresses', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->tinyInteger("is_default")->default(0);
             $table->string("building_name")->nullable();
             $table->string("street_number");
             $table->string("street_name");
