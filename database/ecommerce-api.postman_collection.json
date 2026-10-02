@@ -192,6 +192,60 @@
           ]
         },
         {
+          "name": "Delivery Addresses",
+          "item": [
+            {
+              "name": "Get All",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"jane@example.com\",\r\n    \"password\": \"secret\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{API}}/delivery-addresses",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "delivery-addresses"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Health",
           "request": {
             "auth": {

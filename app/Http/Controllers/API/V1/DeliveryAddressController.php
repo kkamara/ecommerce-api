@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\V1;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\DeliveryAddressCollection;
+use App\Http\Resources\V1\DeliveryAddressResource;
 use App\Models\V1\DeliveryAddress;
 use Illuminate\Http\Request;
 
@@ -13,7 +15,10 @@ class DeliveryAddressController extends Controller
      */
     public function index()
     {
-        //
+        $deliveryAddresses = DeliveryAddress::where(
+            "user_id", auth()->id()
+        )->paginate(7);
+        return new DeliveryAddressCollection($deliveryAddresses);
     }
 
     /**

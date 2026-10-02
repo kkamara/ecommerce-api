@@ -1,22 +1,32 @@
 <?php
 
+use App\Http\Controllers\API\V1\DeliveryAddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\HealthController;
 use App\Http\Controllers\API\EmailController;
 
 // Add third-party API routes
-Route::prefix("/v1/user")->group(function () {
-    Route::post("/register", [UserController::class, "register"]);
-    Route::post("/", [UserController::class, "login"]);
-    Route::delete(
-        "/",
-        [UserController::class, "logout"],
-    )->middleware("auth:sanctum");
-    Route::get(
-        "/authorise",
-        [UserController::class, "authorizeUser"],
-    )->middleware("auth:sanctum");
+Route::prefix("/v1")->group(function () {
+    Route::prefix("/delivery-addresses")->middleware("auth:sanctum")->group(function () {
+        Route::get("/", [DeliveryAddressController::class, "index"]);
+        Route::post("/", [DeliveryAddressController::class, "store"]);
+        Route::get("/{deliveryAddress}", [DeliveryAddressController::class, "show"]);
+        Route::put("/{deliveryAddress}", [DeliveryAddressController::class, "update"]);
+        Route::delete("/{deliveryAddress}", [DeliveryAddressController::class, "destroy"]);
+    });
+    Route::prefix("/user")->group(function () {
+        Route::post("/register", [UserController::class, "register"]);
+        Route::post("/", [UserController::class, "login"]);
+        Route::delete(
+            "/",
+            [UserController::class, "logout"],
+        )->middleware("auth:sanctum");
+        Route::get(
+            "/authorise",
+            [UserController::class, "authorizeUser"],
+        )->middleware("auth:sanctum");
+    });
 });
 
 Route::get("/health", [
