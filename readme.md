@@ -4,7 +4,7 @@
 
 # Ecommerce API [![API](https://github.com/kkamara/ecommerce-api/actions/workflows/build.yml/badge.svg)](https://github.com/kkamara/ecommerce-api/actions/workflows/build.yml)
 
-(02-Sep-2026) A Laravel 13.x payments API.
+(02-Oct-2026) A Laravel 13.x payments API.
 
 * [Using Postman?](#postman)
 
