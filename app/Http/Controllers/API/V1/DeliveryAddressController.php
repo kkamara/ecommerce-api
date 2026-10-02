@@ -68,7 +68,12 @@ class DeliveryAddressController extends Controller
      */
     public function show(DeliveryAddress $deliveryAddress)
     {
-        //
+        if ($deliveryAddress->user_id !== auth()->id()) {
+            return response()->json([
+                "error" => "Unauthorized"
+            ], Response::HTTP_FORBIDDEN);
+        }
+        return new DeliveryAddressResource($deliveryAddress);
     }
 
     /**

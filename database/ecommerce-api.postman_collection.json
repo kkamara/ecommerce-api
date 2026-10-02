@@ -282,6 +282,47 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Show",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
+                "url": {
+                  "raw": "{{API}}/delivery-addresses/3",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "delivery-addresses",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
