@@ -5,6 +5,7 @@ namespace App\Models\V1;
 use App\Models\V1\Traits\User\TimeStampHandling;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Traits\Tappable;
 
 class DeliveryAddress extends Model
@@ -12,6 +13,7 @@ class DeliveryAddress extends Model
     use Tappable;
     use TimeStampHandling;
     use HasFactory;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
