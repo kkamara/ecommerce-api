@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\V1\DeliveryAddressController;
 use App\Http\Controllers\API\V1\BillingAddressController;
 use App\Http\Controllers\API\V1\PaymentCardController;
+use App\Http\Controllers\API\V1\PaymentGatewayController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\HealthController;
@@ -43,6 +44,8 @@ Route::prefix("/v1")->group(function () {
             [UserController::class, "authorizeUser"],
         )->middleware("auth:sanctum");
     });
+    Route::post("/payment-gateway/checkout", [PaymentGatewayController::class, "checkout"])
+        ->middleware("auth:sanctum");
 });
 
 Route::get("/health", [

@@ -956,6 +956,43 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Payment Gateway Checkout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 0.01,\r\n    \"paymentCardId\": 1,\r\n    \"deliveryAddressId\": 1,\r\n    \"billingAddressId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API}}/payment-gateway/checkout",
+              "host": [
+                "{{API}}"
+              ],
+              "path": [
+                "payment-gateway",
+                "checkout"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     }

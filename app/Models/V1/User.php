@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(PaymentCard::class);
     }
+
+    public function paymentGateways()
+    {
+        return $this->hasMany(PaymentGateway::class);
+    }
 }
