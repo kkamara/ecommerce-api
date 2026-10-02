@@ -323,6 +323,56 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Time-Zone",
+                    "value": "Europe/London"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"street_number\": \"2\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{API}}/delivery-addresses/3",
+                  "host": [
+                    "{{API}}"
+                  ],
+                  "path": [
+                    "delivery-addresses",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },

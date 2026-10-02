@@ -12,7 +12,7 @@ Route::prefix("/v1")->group(function () {
         Route::get("/", [DeliveryAddressController::class, "index"]);
         Route::post("/", [DeliveryAddressController::class, "store"]);
         Route::get("/{deliveryAddress}", [DeliveryAddressController::class, "show"]);
-        Route::put("/{deliveryAddress}", [DeliveryAddressController::class, "update"]);
+        Route::patch("/{deliveryAddress}", [DeliveryAddressController::class, "update"]);
         Route::delete("/{deliveryAddress}", [DeliveryAddressController::class, "destroy"]);
     });
     Route::prefix("/user")->group(function () {

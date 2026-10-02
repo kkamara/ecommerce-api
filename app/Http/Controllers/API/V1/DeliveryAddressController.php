@@ -88,7 +88,58 @@ class DeliveryAddressController extends Controller
      */
     public function update(Request $request, DeliveryAddress $deliveryAddress)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "building_name" => "nullable|string|max:255",
+            "street_number" => "sometimes|required|string|max:255",
+            "street_name" => "sometimes|required|string|max:255",
+            "city" => "sometimes|required|string|max:255",
+            "county" => "sometimes|required|string|max:255",
+            "postal_code" => "sometimes|required|string|max:20",
+            "country" => "sometimes|required|string|max:255",
+            "is_default" => "nullable|boolean",
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                "errors" => $validator->errors()
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        if ($request->building_name) {
+            $deliveryAddress->building_name = $request->building_name;
+        }
+        if ($request->street_number) {
+            $deliveryAddress->street_number = $request->street_number;
+        }
+        if ($request->street_name) {
+            $deliveryAddress->street_name = $request->street_name;
+        }
+        if ($request->city) {
+            $deliveryAddress->city = $request->city;
+        }
+        if ($request->county) {
+            $deliveryAddress->county = $request->county;
+        }
+        if ($request->postal_code) {
+            $deliveryAddress->postal_code = $request->postal_code;
+        }
+        if ($request->country) {
+            $deliveryAddress->country = $request->country;
+        }
+        if ($request->is_default) {
+            $deliveryAddress->is_default = $request->is_default;
+        }
+
+        $deliveryAddress->save();
+
+        if ($deliveryAddress->is_default) {
+            auth()->user()
+                ->deliveryAddresses()
+                ->where('id', '!=', $deliveryAddress->id)
+                ->update(['is_default' => 0]);
+        }
+
+        return new DeliveryAddressResource($deliveryAddress);
     }
 
     /**
