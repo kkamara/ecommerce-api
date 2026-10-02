@@ -57,6 +57,13 @@ class DeliveryAddressController extends Controller
                 "country" => $request->country,
                 "is_default" => $request->is_default ?? 0,
             ]);
+        
+        if ($deliveryAddress->is_default) {
+            auth()->user()
+                ->deliveryAddresses()
+                ->where('id', '!=', $deliveryAddress->id)
+                ->update(['is_default' => 0]);
+        }
 
         return (new DeliveryAddressResource($deliveryAddress))
             ->response()
