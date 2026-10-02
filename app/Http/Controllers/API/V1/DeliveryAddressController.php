@@ -88,6 +88,12 @@ class DeliveryAddressController extends Controller
      */
     public function update(Request $request, DeliveryAddress $deliveryAddress)
     {
+        if ($deliveryAddress->user_id !== auth()->id()) {
+            return response()->json([
+                "error" => "Unauthorized"
+            ], Response::HTTP_FORBIDDEN);
+        }
+
         $validator = Validator::make($request->all(), [
             "building_name" => "nullable|string|max:255",
             "street_number" => "sometimes|required|string|max:255",
@@ -147,6 +153,6 @@ class DeliveryAddressController extends Controller
      */
     public function destroy(DeliveryAddress $deliveryAddress)
     {
-        //
+        
     }
 }
