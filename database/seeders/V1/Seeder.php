@@ -4,6 +4,7 @@ namespace Database\Seeders\V1;
 
 use App\Models\V1\DeliveryAddress;
 use App\Models\V1\BillingAddress;
+use App\Models\V1\PaymentCard;
 use App\Models\V1\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder as IlluminateSeeder;
@@ -37,6 +38,14 @@ class Seeder extends IlluminateSeeder
             "user_id" => $userId,
         ]);
         BillingAddress::factory()->create([
+            "user_id" => $userId,
+            "is_default" => 1,
+        ]);
+
+        PaymentCard::factory()->create([
+            "user_id" => $userId,
+        ]);
+        PaymentCard::factory()->create([
             "user_id" => $userId,
             "is_default" => 1,
         ]);

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\V1\DeliveryAddressController;
 use App\Http\Controllers\API\V1\BillingAddressController;
+use App\Http\Controllers\API\V1\PaymentCardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\UserController;
 use App\Http\Controllers\API\HealthController;
@@ -22,6 +23,13 @@ Route::prefix("/v1")->group(function () {
         Route::get("/{billingAddress}", [BillingAddressController::class, "show"]);
         Route::patch("/{billingAddress}", [BillingAddressController::class, "update"]);
         Route::delete("/{billingAddress}", [BillingAddressController::class, "destroy"]);
+    });
+    Route::prefix("/payment-cards")->middleware("auth:sanctum")->group(function () {
+        Route::get("/", [PaymentCardController::class, "index"]);
+        Route::post("/", [PaymentCardController::class, "store"]);
+        Route::get("/{paymentCard}", [PaymentCardController::class, "show"]);
+        Route::patch("/{paymentCard}", [PaymentCardController::class, "update"]);
+        Route::delete("/{paymentCard}", [PaymentCardController::class, "destroy"]);
     });
     Route::prefix("/user")->group(function () {
         Route::post("/register", [UserController::class, "register"]);
