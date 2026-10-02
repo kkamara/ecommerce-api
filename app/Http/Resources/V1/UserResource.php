@@ -19,7 +19,6 @@ class UserResource extends JsonResource
             "firstName" => $this->first_name,
             "lastName" => $this->last_name,
             "email" => $this->email,
-            "avatarPath" => $this->getAvatarPath(),
             "createdAt" => $this->created_at
                 ->tz(config(
                     "app.client_timezone",
