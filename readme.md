@@ -27,9 +27,9 @@
 
 [Get Postman HTTP client](https://www.postman.com/).
 
-[Postman API Collection for PHP React Boilerplate](./database/php-react-boilerplate.postman_collection.json).
+[Postman API Collection for Ecommerce API](./database/ecommerce-api.postman_collection.json).
 
-[Postman API Environment for PHP React Boilerplate](./database/php-react-boilerplate.postman_environment.json).
+[Postman API Environment for Ecommerce API](./database/ecommerce-api.postman_environment.json).
 
 ## Installation
 
